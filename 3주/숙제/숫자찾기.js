@@ -7,10 +7,12 @@ const rl = readline.createInterface({
 let inputData = [];
 let a;
 let b;
+let com = [];
 rl.on('line', function (line) {
   inputData.push(line.split(' ').map((x) => parseInt(x)));
   a = inputData[0];
   b = inputData[2];
+  com = inputData[3];
 }).on('close', function () {
   arr = new Map();
   for(var i=0; i<a; i++){
@@ -25,13 +27,15 @@ rl.on('line', function (line) {
       arr.set(n,1);
     }
   }
-  for(var i=0; i<b; i++){
-    var input = inputData[3];
-    var x = input[i];
-    if(arr.has(x)){
-      console.log(arr.get(x));
+  com.forEach((el,i) =>{
+    if(arr.has(el)){
+      com[i] = arr.get(el);
     }
-    else console.log(0);
-  }
+    else{
+      com[i] = 0;
+    }
+  })
+
+  console.log(com.join(" "));
    process.exit();
 });
