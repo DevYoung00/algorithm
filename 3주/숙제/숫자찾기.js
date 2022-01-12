@@ -6,12 +6,10 @@ const rl = readline.createInterface({
 });
 let inputData = [];
 let a;
-let b;
 let com = [];
 rl.on('line', function (line) {
   inputData.push(line.split(' ').map((x) => parseInt(x)));
   a = inputData[0];
-  b = inputData[2];
   com = inputData[3];
 }).on('close', function () {
   arr = new Map();
